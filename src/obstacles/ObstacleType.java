@@ -1,7 +1,10 @@
 package obstacles;
 
 public enum ObstacleType {
-    GUARD("g", 'g');
+    GUARD("g", 'g'),
+    FENCE("f", 'f'),
+    SENSOR("s", 's'),
+    CAMERA("c", 'c');
 
     private final String argumentName;
     private final char symbol;
