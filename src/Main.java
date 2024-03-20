@@ -76,6 +76,8 @@ class Main {
                     case SENSOR -> Sensor.parse(cleanedArg);
                     case CAMERA -> Camera.parse(cleanedArg);
                     case WALL -> Wall.parse(cleanedArg);
+                    case LASER -> Laser.parse(cleanedArg);
+                    case MINEFIELD -> Minefield.parse(cleanedArg);
                 };
                 obstacles.add(obstacle);
             }
