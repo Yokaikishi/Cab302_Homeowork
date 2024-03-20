@@ -1,15 +1,31 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.ArrayList;
+import java.util.HashMap;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+class Main {
+    public static void main(String[] args) {
+        HashMap<String, ArrayList<String>> parsedArgs = parseArgs(args);
+        System.out.println(parsedArgs);
+    }
+
+    // Creates a HashMap which allows arguments to be read from config
+    private static HashMap<String, ArrayList<String>> parseArgs(String[] args) {
+        HashMap<String, ArrayList<String>> parsedArgs = new HashMap<>();
+        ArrayList<String> argValues = null;
+
+        // Iterates every argument given, separating each by identifying "-"
+        // Which puts the individual args into an arraylist to be used later
+        for (String arg : args) {
+            if (arg.startsWith("-")) {
+                argValues = new ArrayList<>();
+                parsedArgs.put(arg, argValues);
+                continue;
+            }
+
+            // Ensures no args given are null/empty
+            if (argValues != null) {
+                argValues.add(arg);
+            }
         }
+        return parsedArgs;
     }
 }
